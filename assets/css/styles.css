@@ -153,11 +153,6 @@ p {
   margin-top: 1.75rem;
 }
 
-.counter {
-  color: var(--muted);
-  margin: 0 0 0.35rem;
-}
-
 .prompt {
   margin: 0 0 0.5rem;
   font-size: 1.35rem;

@@ -4,7 +4,6 @@ const $ = (sel) => /** @type {HTMLElement} */ (document.querySelector(sel));
 
 const els = {
   stepperList: /** @type {HTMLOListElement} */ ($("#stepperList")),
-  counter: $("#questionCounter"),
   prompt: /** @type {HTMLHeadingElement} */ ($("#questionPrompt")),
   help: /** @type {HTMLParagraphElement} */ ($("#questionHelp")),
   form: /** @type {HTMLFormElement} */ ($("#choicesForm")),
@@ -56,14 +55,6 @@ function updateStepper(activeStageId) {
   });
 }
 
-function computeQuestionOrder() {
-  // Create a deterministic order list by walking the current path; used for "Question X of Y".
-  // This is not the total possible nodes; it's the path the user is taking.
-  const path = [START_NODE_ID, ...state.history, state.currentNodeId];
-  // Deduplicate while preserving order
-  return path.filter((id, idx) => path.indexOf(id) === idx).filter((id) => NODES[id]?.type === "question");
-}
-
 function setHelpText(text) {
   if (text && text.trim().length > 0) {
     els.help.hidden = false;
@@ -74,15 +65,8 @@ function setHelpText(text) {
   }
 }
 
-function setCounterText() {
-  const questions = computeQuestionOrder();
-  const idx = Math.max(0, questions.indexOf(state.currentNodeId));
-  els.counter.textContent = `Question ${idx + 1} of ${questions.length}`;
-}
-
 function renderQuestion(node) {
   updateStepper(node.stage);
-  setCounterText();
   els.prompt.textContent = node.prompt;
   setHelpText(node.helpText);
 
@@ -145,7 +129,6 @@ function renderQuestion(node) {
 
 function renderOutcome(node) {
   updateStepper("tier4");
-  els.counter.textContent = "Results";
   els.prompt.textContent = node.title;
   setHelpText("");
 

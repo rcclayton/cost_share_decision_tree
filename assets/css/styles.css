@@ -1,0 +1,15 @@
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 60rem;
+  padding: 2.5rem 1.25rem;
+  margin: 0 auto;
+}

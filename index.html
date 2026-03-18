@@ -8,10 +8,41 @@
     <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
   <body>
-    <main class="container">
-      <h1>Hello World</h1>
-      <p>This site will become a cost share decision tree for Purdue Pre-Awards Specialists.</p>
+    <a class="skipLink" href="#quizMain">Skip to main content</a>
+
+    <main id="quizMain" class="page">
+      <section class="card" aria-labelledby="pageTitle">
+        <header class="header">
+          <div>
+            <h1 id="pageTitle">Cost Share Decision Tree</h1>
+            <p class="subhead">
+              Answer a few questions to get a recommended plan of action for cost share.
+            </p>
+          </div>
+        </header>
+
+        <nav class="stepper" aria-label="Progress">
+          <ol id="stepperList" class="stepperList"></ol>
+        </nav>
+
+        <section class="content">
+          <p id="questionCounter" class="counter" aria-live="polite"></p>
+          <h2 id="questionPrompt" class="prompt"></h2>
+          <p id="questionHelp" class="help" hidden></p>
+
+          <form id="choicesForm" class="choices" aria-describedby="questionHelp"></form>
+
+          <div class="actions">
+            <button id="backBtn" type="button" class="btn btnSecondary">Back</button>
+            <div class="actionsRight">
+              <button id="restartBtn" type="button" class="btn btnSecondary" hidden>Start over</button>
+              <button id="nextBtn" type="button" class="btn btnPrimary" disabled>Next</button>
+            </div>
+          </div>
+        </section>
+      </section>
     </main>
-    <script src="./assets/js/main.js" defer></script>
+
+    <script type="module" src="./assets/js/main.js"></script>
   </body>
 </html>
